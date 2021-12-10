@@ -1,0 +1,76 @@
+# API uprodit : Consommation des webservices
+
+## Table des matières
+
+[[_TOC_]]
+
+## Objectifs de cette documentation
+
+Cette documentation vise à fournir tout les éléments permettant de consommer les webservices de uprodit par des pilotes externes (application android par exemple).
+
+## Fournisseurs de service (silos)
+
+Les fournisseurs de services sont les suivants :
+
+* Prodit-ws : https://api.uprodit.com (principal fournisseur)
+* Prodit-se : https://search.uprodit.com (composant d'intégration avec Elasticsearch, uniquement pour les recherches de profils)
+
+## Authentification aux webservices de l'API
+
+### Authentication globale d'une application
+
+La quasi-totalité des webservices sont authentifiés par application (il faut faire une demande d'ajout d'un `appid` aux équipes de uprodit.com pour pouvoir y accéder).
+
+La solution mise en oeuvre : http://ws-cxf-ext.github.io/ws-cxf-ext/
+
+Pour celles et ceux qui veulent utiliser la partie client de cette solution : https://github.com/ws-cxf-ext/ws-cxf-ext/wiki/Getting-started#spring-server-configuration
+
+Pour les autres consommateurs, passer les paramètres suivants dans un paramètre header "Authorization":
+
+* auth_consumer_key : chiffrage hmac / sha1 de l'environnement avec la clef autorisée côté serveur (correspondant aux "appids") ;
+* auth_callback : url du webservice avec paramètres ;
+* auth_nonce : token généré aléatoirement (`UUID.randomUUID().toString()`) chiffré en hmac / sha1 via la clef autorisée côté serveur ;
+* auth_token : token généré aléatoirement (pas la même que auth_nonce)
+* auth_signature : concaténation de l'uri et du token (auth_token) chiffrage via la clef autorisée côté serveur ;
+* auth_timestamp : timestamp
+* auth_signature_method : toujours "HMAC-SHA1"
+
+Ces paramètres sont concaténés sous la forme :
+
+```
+Auth auth_consumer_key=valeur&auth_callback=valeur&...
+```
+
+Il enfin également possible de générer le header via l'api [`/v1/authheader`](https://api.uprodit.com):
+
+```shell
+$ curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"XXXXXXX","env":"YYYY","uri":"https://api.uprodit.com/v1/search/all"}' -H "Content-Type: application/json"
+{"authorization":"Auth ?auth_signature=CQtP0y0VdeZ%2FQz%2FpCXmO4sddsdleTKI%3D&auth_nonce=vYGxnKbLFPxsdlsdksl8kg9XX%2BPQ6X2c%3D&auth_callback=%2Fv1%2Fsearch%2Fall&auth_timestamp=1638971145860&auth_token=0c5bdc20-daca-4f8e-81c3-e0f65591927e&auth_signature_method=HMAC-SHA1&auth_consumer_key=11aqkYrxIy7pqsfkslqfklsp1JSZUsdsd%3D"}
+````
+
+Il faudra passer cette valeur dans le header `Authorization` du webservice que l'on souhaite appeler (qui correspond à l'uri passé dans le body). Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandé en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir localement le code qui vous permet de générer la signature à partir de l'`appid`.
+
+### Authentification d'un utilisateur
+
+Un grand nombre d'API demandent un contrôle de droits des utilisateurs soit via les headers suivants :
+
+* `x-uprodit-username`: email de l'utilisateur
+* `x-uprodit-password`: password de l'utilisateur hashé en MD5
+
+Soit le header `x-uprodit-token`: il s'agit d'un token ayant une validité de 30 jours, généré avec l'api [`/v1/token`](https://api.uprodit.com) de la façon suivante:
+
+```shell
+$ curl -X POST https://api.uprodit.com/v1/token -H "Authorization: Auth ?auth_signature=..." -H "Content-Type: application/json" -d '{"username":"someone@uprodit.com","password":"mysecuredmdp"}'
+{"token": "TOKEN_BASE64_VALUE"}
+```
+
+Pour éviter toute compromission, nous vous recommandons fortement d'utiliser ce token et de n'envoyer votre mot de passe qu'une fois que vous arrivez à expiration (vous aurez des erreurs 401 qui vous indiqueront qu'il faut de nouveau faire un `POST` sur l'api [`/v1/token`](https://api.uprodit.com)).
+
+## Contrats d'interfaces
+
+Les documentations et WADL est disponible ici : 
+* [API](https://api.uprodit.com)
+* [SEARCH](https://search.uprodit.com)
+
+Ces fichiers fournissent la structure des objets consommés et retournés par les différents Webservices (ces objets doivent être sérialisés/désérialisés en JSON).
+Vous pouvez utiliser le plugin Maven de CXF : [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) pour construire les objets en question
