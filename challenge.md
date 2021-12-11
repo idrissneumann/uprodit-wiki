@@ -12,7 +12,20 @@ Reproduire le moteur de recherche de uprodit.com: https://www.uprodit.com/profil
 ![qr_search_engine](./img/qr_search_engine.png)
 </div>
 
+Voici à quoi il ressemble:
+
 ![uprodit_search_engine](./img/uprodit_search_engine.png)
+
+## Consignes
+
+* Technologie frontend de type SPA : Angular, React ou Vue.JS
+* Mettre à disposition un fichier `docker-compose.yml` pour pouvoir démarrer facilement l'application en local sans n'avoir aucune dépendance à installer
+* Pusher la solution sur un repo publique sur [github](https://github.com), [gitlab](https://gitlab.com) ou [bitbucket](https://bitbucket.org).
+* Déployer l'application sur un cloud tel que [Heroku](https://www.heroku.com) ou [Netlify](https://www.netlify.com) ou autre hébergeur de votre choix (il faut une URL en https).
+* Envoyer les liens à l'adresse `challenge@comwork.io` (faites le maximum, n'hésitez pas à nous envoyer votre repo même si vous n'avez pas pu faire les partie docker ou hébergement)
+* Pas besoin de faire un gros effort sur le design: un seul champs de recherche multicritères et des résultats de recherche sans mettre obligatoirement les photos sont demandés
+
+## Api à utiliser
 
 Pour cela vous pouvez utiliser l'une de ces deux APIs au choix:
 
@@ -22,7 +35,7 @@ Pour cela vous pouvez utiliser l'une de ces deux APIs au choix:
 ![qr_api](./img/qr_api.png)
 </div>
 
-Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./uprodit_api.md)
+L'appid à utiliser est `challenge_uprodit`. Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./uprodit_api.md)
 
 * [search.uprodit.com](https://search.uprodit.com) : api publique de recherche avec la méthode `/v1/personalProfile/all` (les informations des profils saisis dans plusieurs langues ne sont pas aggrégés en un seul résultat contrairement à la méthode précédente)
 
