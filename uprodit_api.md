@@ -50,6 +50,10 @@ $ curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"XXXXXXX","env":"YYY
 
 Il faudra passer cette valeur dans le header `Authorization` du webservice que l'on souhaite appeler (qui correspond à l'uri passé dans le body). Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandé en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir localement le code qui vous permet de générer la signature à partir de l'`appid`.
 
+Exemple de requête:
+
+![curl_api](./img/curl_api.png)
+
 ### Authentification d'un utilisateur
 
 Un grand nombre d'API demandent un contrôle de droits des utilisateurs soit via les headers suivants :
