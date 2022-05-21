@@ -34,7 +34,7 @@ Pour cela vous pouvez utiliser l'une de ces deux APIs au choix:
 ![qr_api](./img/qr_api.png)
 </div>
 
-L'appid à utiliser est `challenge_uprodit` et le usecase `perso`. Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./uprodit_api.md)
+L'appid à utiliser est `challenge_uprodit`, l'environnement `production` et le usecase `perso`. Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./uprodit_api.md)
 
 * [search.uprodit.com](https://search.uprodit.com) : api publique de recherche avec la méthode `/v1/personalProfile/all` (les informations des profils saisis dans plusieurs langues ne sont pas aggrégés en un seul résultat contrairement à la méthode précédente)
 
