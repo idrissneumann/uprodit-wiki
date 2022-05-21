@@ -82,7 +82,7 @@ Exemple de requête:
 Un grand nombre d'API demandent un contrôle de droits des utilisateurs soit via les headers suivants :
 
 * `x-uprodit-username`: email de l'utilisateur
-* `x-uprodit-password`: password de l'utilisateur hashé en MD5
+* `x-uprodit-password`: password de l'utilisateur hashé en bcrypt
 
 Soit le header `x-uprodit-token`: il s'agit d'un token ayant une validité de 30 jours, généré avec l'api [`/v1/token`](https://api.uprodit.com) de la façon suivante:
 
