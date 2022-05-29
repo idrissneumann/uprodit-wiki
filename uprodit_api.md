@@ -44,7 +44,7 @@ Les fournisseurs de services sont les suivants :
 
 La quasi-totalité des webservices sont authentifiés par application (il faut faire une demande d'ajout d'un `appid` aux équipes de uprodit.com pour pouvoir y accéder).
 
-La solution mise en oeuvre : https://ws-cxf-ext.github.io/ws-cxf-ext/
+La solution mise en oeuvre est la signature HMAC avec : https://ws-cxf-ext.github.io/ws-cxf-ext/
 
 Pour celles et ceux qui veulent utiliser la partie client de cette solution : https://gitlab.comwork.io/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
 
@@ -53,7 +53,7 @@ Pour les autres consommateurs, passer les paramètres suivants dans un paramètr
 * `auth_consumer_key` : chiffrage hmac / sha1 de l'environnement avec l'`appid` ;
 * `auth_callback` : url du webservice avec paramètres ;
 * `auth_nonce` : token généré aléatoirement (`UUID.randomUUID().toString()`) chiffré en hmac / sha1 via l'`appid` ;
-* `auth_token` : token généré aléatoirement (pas la même que auth_nonce)
+* `auth_token` : token généré aléatoirement (pas le même que auth_nonce)
 * `auth_signature` : concaténation de l'uri et du token (`auth_token`) chiffrage via la l'`appid` ;
 * `auth_timestamp` : timestamp
 * `auth_signature_method` : toujours "HMAC-SHA1"
