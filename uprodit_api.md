@@ -23,11 +23,10 @@ Il s'agit d'un style d'architecture basé sur des services web utilisant les tec
 * Quelques codes retours du protocole HTTP qui permettent de détecter la bonne exécution d'un webservice REST ou bien d'identifier le type d'erreur rencontrée :
   * 200 : bonne réception d'une ressource (GET)
   * 201 : bonne persistance d'une ressource (PUT/POST)
-  * 204 : ressource non trouvée (GET)
   * 400 : paramètres de la requête invalide (GET/PUT/POST/DELETE)
   * 401 : problème d'authentification du consommateur (GET/PUT/POST/DELETE)
   * 403 : problèmes de droits d'accès (GET/PUT/POST/DELETE)
-  * 404 : service inexistant  (GET/PUT/POST/DELETE)
+  * 404 : ressource inexistante  (GET/PUT/POST/DELETE)
   * 500 : erreur technique (GET/PUT/POST/DELETE)
 * L'URI qui possède une signification importante pour l'appel d'un service : celle de permettre, par une simple lecture visuelle, d'identifier le service auquel on fait appel, voire dans le cas d'un appel de type GET, la ressource à récupérer.
 
