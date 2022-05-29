@@ -82,7 +82,7 @@ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"chall
 Puis directement consommer le webservice comme ceci:
 
 ```shell
-curl -H "Authorization: ${authorization}" "https://api.uprodit.com/v2/profile/personal/en/51"
+curl -H "Authorization: ${authorization}" "https://api.uprodit.com/v2/profile/personal/en/51" 2>/dev/null | jq .
 ```
 
 Exemple de requête de recherche:
@@ -94,12 +94,12 @@ Exemple de requête de recherche:
 Un grand nombre d'API demandent un contrôle de droits des utilisateurs soit via les headers suivants :
 
 * `x-uprodit-username`: email de l'utilisateur
-* `x-uprodit-password`: password de l'utilisateur hashé en bcrypt
+* `x-uprodit-password`: password de l'utilisateur
 
 Soit le header `x-uprodit-token`: il s'agit d'un token ayant une validité de 30 jours, généré avec l'api [`/v1/token`](https://api.uprodit.com) de la façon suivante:
 
 ```shell
-$ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"challenge_uprodit","env":"production","uri":"https://api.uprodit.com/v1/token"}' -H "Content-Type: application/json"|jq .authorization -r)
+$ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"challenge_uprodit","env":"production","uri":"https://api.uprodit.com/v1/token"}' -H "Content-Type: application/json" 2>/dev/null|jq .authorization -r)
 $ curl -X POST https://api.uprodit.com/v1/token -H "Authorization: ${authorization}" -H "Content-Type: application/json" -d '{"username":"someone@uprodit.com","password":"changeit"}'
 {"token": "TOKEN_BASE64_VALUE"}
 ```
