@@ -18,7 +18,8 @@ Il s'agit d'un style d'architecture basé sur des services web utilisant les tec
 * Quelques directives du protocole HTTP qui permettent d'identifier les opérations à exécuter par le service appelé. Il s'agit des directives suivantes :
   * POST pour la création d’une ressource en base (ou autre support de persistance) ;
   * PUT pour la modification d’une ressource en base (ou autre support de persistance) ;
-  * GET pour la récupération de ressources archivées en base ou autre support de persistance ;
+  * PATCH pour la modification partielle d’une ressource en base (ou autre support de persistance) ;
+  * GET pour la récupération de ressources archivées en base (ou autre support de persistance) ;
   * DELETE pour la suppression de ressources persistées en base où sur d'autres supports.
 * Quelques codes retours du protocole HTTP qui permettent de détecter la bonne exécution d'un webservice REST ou bien d'identifier le type d'erreur rencontrée :
   * 200 : bonne réception d'une ressource (GET)
