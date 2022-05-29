@@ -44,9 +44,9 @@ Les fournisseurs de services sont les suivants :
 
 La quasi-totalité des webservices sont authentifiés par application (il faut faire une demande d'ajout d'un `appid` aux équipes de uprodit.com pour pouvoir y accéder).
 
-La solution mise en oeuvre : http://ws-cxf-ext.github.io/ws-cxf-ext/
+La solution mise en oeuvre : https://ws-cxf-ext.github.io/ws-cxf-ext/
 
-Pour celles et ceux qui veulent utiliser la partie client de cette solution : https://github.com/ws-cxf-ext/ws-cxf-ext/wiki/Getting-started#spring-server-configuration
+Pour celles et ceux qui veulent utiliser la partie client de cette solution : https://gitlab.comwork.io/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
 
 Pour les autres consommateurs, passer les paramètres suivants dans un paramètre header "Authorization":
 
