@@ -4,4 +4,5 @@ Ce repo centralise l'ensemble des documentations et formations publiques mis à 
 
 * [consommation des API](./uprodit_api.md)
 * [formation sur les API](./formation_slides.pdf)
+* [collections postman](./postman)
 * [challenge](./challenge.md)

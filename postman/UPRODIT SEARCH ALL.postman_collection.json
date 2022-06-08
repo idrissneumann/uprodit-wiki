@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "0efd9b65-2efe-4843-9c28-8d893d7ee3e4",
+		"name": "UPRODIT SEARCH ALL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8584492"
+	},
+	"item": [
+		{
+			"name": "AUTHORIZATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v1/search/all?startIndex=0&maxResults=10&usecase=perso\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PERFORM SEARCH",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/search/all?startIndex=0&maxResults=10&usecase=perso",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"search",
+						"all"
+					],
+					"query": [
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "maxResults",
+							"value": "10"
+						},
+						{
+							"key": "usecase",
+							"value": "perso"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

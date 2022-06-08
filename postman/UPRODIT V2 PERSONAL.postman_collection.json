@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "0c6e8ed1-2bf4-4f34-8652-2bf4cf0ced69",
+		"name": "UPRODIT V2 PERSONAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8584492"
+	},
+	"item": [
+		{
+			"name": "AUTHORIZATION TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v1/search/all?startIndex=0&maxResults=10&usecase=perso\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACCESS_TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"personal_access_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{ADMIN_USERNAME}}\",\n    \"password\": \"{{ADMIN_PASSWORD}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/token",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION CREATE P",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/personal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE PROFILE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"personal_profile_id\", responseBody);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Abdelkhalek Test\",\n    \"firstname\": \"Rihab Test\",\n    \"hobbies\": \"Voyager , Sport \",\n    \"about\": \"Lead développeuse Java, Springboot, Angular, Python Flask, PHP Laravel et NoSQL (Elasticsearch, Redis). Ingénieure diplômée de l'ISAMM.\",\n    \"email\": \"rihab.abdelkhalek.test@test.com\",\n    \"location\": \"Manouba\",\n    \"lng\": \"{{LNG}}\",\n    \"linkText\": \"Rihab Abdelkhalek\",\n    \"birthdate\": 789868800000,\n    \"nationality\": \"Tunisia\",\n    \"specialities\": [\n        \"Consultant Java / JEE\",\n        \"Développeur Android\",\n        \"IT consultant at comwork.io\"\n    ],\n    \"skills\": [\n        {\n            \"name\": \"Node.JS\"\n        },\n        {\n            \"name\": \"RabbitMQ\"\n        },\n        {\n            \"name\": \"Kafka\"\n        },\n        {\n            \"name\": \"Scrum\"\n        },\n        {\n            \"name\": \"Elasticsearch\"\n        },\n        {\n            \"name\": \"Unity 3D\"\n        },\n        {\n            \"name\": \"Cordova\"\n        },\n        {\n            \"name\": \"Angular\"\n        },\n        {\n            \"name\": \"Photoshop\"\n        },\n        {\n            \"name\": \"Matlab\"\n        },\n        {\n            \"name\": \"Uml\"\n        },\n        {\n            \"name\": \"Junit\"\n        },\n        {\n            \"name\": \"Mockito\"\n        },\n        {\n            \"name\": \"Thymeleaf\"\n        },\n        {\n            \"name\": \"Docker\"\n        },\n        {\n            \"name\": \"Gitlab\"\n        },\n        {\n            \"name\": \"PostgreSQL\"\n        },\n        {\n            \"name\": \"Java\"\n        },\n        {\n            \"name\": \"Flask\"\n        },\n        {\n            \"name\": \"PHP Laravel\"\n        },\n        {\n            \"name\": \"Unittest\"\n        }\n    ],\n    \"educations\": [\n        {\n            \"name\": \"Ingénieur informatique\",\n            \"school\": \"ISAMM: Institut Supérieur des Arts Multimédia de la Manouba\",\n            \"rank\": \"20\",\n            \"year\": \"de 2016 jusqu’à 2019\",\n            \"about\": null,\n            \"score\": \"16\"\n        },\n        {\n            \"name\": \"PhD (in progress)\",\n            \"school\": \"ISG: Institut Supérieur de Gestion de Tunis\",\n            \"year\": \"2019\"\n        },\n        {\n            \"name\": \"Licence informatique multimédia\",\n            \"school\": \"ISAMM : Institut Supérieur des Arts Multimédia de la Manouba\",\n            \"rank\": \"20\",\n            \"year\": \"2016\",\n            \"score\": \"17\"\n        }\n    ],\n    \"awards\": [\n        {\n            \"name\": \"ENSI Web Camp\",\n            \"about\": \"Deuxième prix \",\n            \"date\": 1505001600000\n        }\n    ],\n    \"languages\": [\n        {\n            \"name\": \"Anglais\",\n            \"level\": \"Diplômée de l'Institut Bourguiba des Langues Vivantes\"\n        },\n        {\n            \"name\": \"Français\",\n            \"level\": \"Certificat Voltaire (68 %)\"\n        },\n        {\n            \"name\": \"Arabe\",\n            \"level\": \"Langue maternelle\"\n        }\n    ],\n    \"aclProjects\": [],\n    \"acl\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/personal",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION GET P",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/personal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PROFILE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var date = new Date();",
+							"",
+							"jsonData.cin = date.toISOString();",
+							"",
+							"postman.setEnvironmentVariable(\"personal_body\", JSON.stringify(jsonData));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/personal/{{LNG}}/{{personal_profile_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"personal",
+						"{{LNG}}",
+						"{{personal_profile_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION UPDATE P",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/personal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE PROFILE",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{personal_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/personal",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"personal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION GET P",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/personal\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET PROFILE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var date = new Date();",
+							"",
+							"jsonData.cin = date.toISOString();",
+							"",
+							"postman.setEnvironmentVariable(\"personal_body\", JSON.stringify(jsonData));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/personal/{{LNG}}/{{personal_profile_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"personal",
+						"{{LNG}}",
+						"{{personal_profile_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION DELETE P",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/personal/{{personal_profile_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE PROFILE",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/personal/{{personal_profile_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"personal",
+						"{{personal_profile_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
