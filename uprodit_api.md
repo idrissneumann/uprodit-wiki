@@ -24,6 +24,7 @@ Il s'agit d'un style d'architecture basé sur des services web utilisant les tec
 * Quelques codes retours du protocole HTTP qui permettent de détecter la bonne exécution d'un webservice REST ou bien d'identifier le type d'erreur rencontrée :
   * 200 : bonne réception d'une ressource (GET)
   * 201 : bonne persistance d'une ressource (PUT/POST)
+  * 204 : pas de contenu (peut indiquer la bonne exécution d'un DELETE ou d'un PUT ou bien que la ressource n'existe pas dans le cas d'un GET à l'instar du code 404)
   * 400 : paramètres de la requête invalide (GET/PUT/POST/DELETE)
   * 401 : problème d'authentification du consommateur (GET/PUT/POST/DELETE)
   * 403 : problèmes de droits d'accès (GET/PUT/POST/DELETE)
