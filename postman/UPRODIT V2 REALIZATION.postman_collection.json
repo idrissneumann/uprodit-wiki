@@ -1,0 +1,654 @@
+{
+	"info": {
+		"_postman_id": "c731cbd5-f994-4b96-a365-e40b440c9db3",
+		"name": "UPRODIT V2 REALIZATION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8584492"
+	},
+	"item": [
+		{
+			"name": "AUTHORIZATION TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v1/token\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACCESS_TOKEN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"personal_access_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{ADMIN_USERNAME}}\",\n    \"password\": \"{{ADMIN_PASSWORD}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/token",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION CREATE R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE REALIZATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"realization_id\", responseBody);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"currentDate = new Date();",
+							"postman.setEnvironmentVariable(\"current_timestamp\", currentDate.getTime());",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Realization test\",\n    \"profileId\": {{PERSONAL_PROFILE_ID}},\n    \"order\": 1,\n    \"type\": 1,\n    \"creationDate\": {{current_timestamp}},\n    \"about\": \"this is the realization of whatever\",\n    \"mimeType\": \"image/png\",\n    \"b64Content\": \"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uWRylcDIsYAKVEiOH/wPfvfWzE9NukmhOND5YtsfI0BwF2jUbPv72LYbJ0DgGbjSWv5KHZj5JL3W0iJHQP82cHHd0uQ94HIHGHzSJUNypAAtfz4PvJ/RN2WBgVugd83tW/Mcpw9AmnqVvAEODoHRAmWve7y7u71v/9Y0+/cDn7FyuT4TGAAAABFoaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+CiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICB4bWxuczppcHRjRXh0PSJodHRwOi8vaXB0Yy5vcmcvc3RkL0lwdGM0eG1wRXh0LzIwMDgtMDItMjkvIgogICAgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iCiAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgeG1sbnM6cGx1cz0iaHR0cDovL25zLnVzZXBsdXMub3JnL2xkZi94bXAvMS4wLyIKICAgIHhtbG5zOkdJTVA9Imh0dHA6Ly93d3cuZ2ltcC5vcmcveG1wLyIKICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICB4bXBNTTpEb2N1bWVudElEPSJnaW1wOmRvY2lkOmdpbXA6OWRkZDRhZTAtYjY2Zi00MDQwLTkyYTAtZjI5NzhlMTNkODE4IgogICB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjZhNGFiZTQyLTBlNDktNGYzZC1hOTYwLTNhODM2N2U2OWIzYiIKICAgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjM2MjQ0NzU1LTI2Y2QtNGUwMS04MjE3LWI1ZDVlOTMyNWQ0ZCIKICAgR0lNUDpBUEk9IjIuMCIKICAgR0lNUDpQbGF0Zm9ybT0iTWFjIE9TIgogICBHSU1QOlRpbWVTdGFtcD0iMTY1NDc2ODM5MjgwMzQ4OSIKICAgR0lNUDpWZXJzaW9uPSIyLjEwLjIyIgogICBkYzpGb3JtYXQ9ImltYWdlL3BuZyIKICAgdGlmZjpPcmllbnRhdGlvbj0iMSIKICAgeG1wOkNyZWF0b3JUb29sPSJHSU1QIDIuMTAiPgogICA8aXB0Y0V4dDpMb2NhdGlvbkNyZWF0ZWQ+CiAgICA8cmRmOkJhZy8+CiAgIDwvaXB0Y0V4dDpMb2NhdGlvbkNyZWF0ZWQ+CiAgIDxpcHRjRXh0OkxvY2F0aW9uU2hvd24+CiAgICA8cmRmOkJhZy8+CiAgIDwvaXB0Y0V4dDpMb2NhdGlvblNob3duPgogICA8aXB0Y0V4dDpBcnR3b3JrT3JPYmplY3Q+CiAgICA8cmRmOkJhZy8+CiAgIDwvaXB0Y0V4dDpBcnR3b3JrT3JPYmplY3Q+CiAgIDxpcHRjRXh0OlJlZ2lzdHJ5SWQ+CiAgICA8cmRmOkJhZy8+CiAgIDwvaXB0Y0V4dDpSZWdpc3RyeUlkPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDplYzMyZWQyNC1mZTExLTQ3YWMtODc4Ni0wMmQwNjdmMTQ3NzkiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTWFjIE9TKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyMi0wNi0wOVQxMDozMjowNSswMTowMCIvPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo2YmIwOWY4MS1jMDQzLTRmYmItODQ0ZC02OGI0ZTM3MmNiMTkiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTWFjIE9TKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyMi0wNi0wOVQxMDo1MjoxNSswMTowMCIvPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJzYXZlZCIKICAgICAgc3RFdnQ6Y2hhbmdlZD0iLyIKICAgICAgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpiZWZlZTI1ZS0yODk5LTQ0MmQtODY0MS1iZWFjMjFhNjkyZjQiCiAgICAgIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkdpbXAgMi4xMCAoTWFjIE9TKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyMi0wNi0wOVQxMDo1MzoxMiswMTowMCIvPgogICAgPC9yZGY6U2VxPgogICA8L3htcE1NOkhpc3Rvcnk+CiAgIDxwbHVzOkltYWdlU3VwcGxpZXI+CiAgICA8cmRmOlNlcS8+CiAgIDwvcGx1czpJbWFnZVN1cHBsaWVyPgogICA8cGx1czpJbWFnZUNyZWF0b3I+CiAgICA8cmRmOlNlcS8+CiAgIDwvcGx1czpJbWFnZUNyZWF0b3I+CiAgIDxwbHVzOkNvcHlyaWdodE93bmVyPgogICAgPHJkZjpTZXEvPgogICA8L3BsdXM6Q29weXJpZ2h0T3duZXI+CiAgIDxwbHVzOkxpY2Vuc29yPgogICAgPHJkZjpTZXEvPgogICA8L3BsdXM6TGljZW5zb3I+CiAgPC9yZGY6RGVzY3JpcHRpb24+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg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\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION SEARCH R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization/all?profileId={{PERSONAL_PROFILE_ID}}&startIndex=0&maxResults=10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION SEARCH R Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization/all?profileId={{PERSONAL_PROFILE_ID}}&startIndex=0&maxResults=10",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization",
+						"all"
+					],
+					"query": [
+						{
+							"key": "profileId",
+							"value": "{{PERSONAL_PROFILE_ID}}"
+						},
+						{
+							"key": "startIndex",
+							"value": "0"
+						},
+						{
+							"key": "maxResults",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION GET R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization/{{LNG}}/{{realization_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REALIZATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var date = new Date();",
+							"",
+							"jsonData.content = date.toISOString();",
+							"",
+							"postman.setEnvironmentVariable(\"realization_body\", JSON.stringify(jsonData));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization/{{LNG}}/{{realization_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization",
+						"{{LNG}}",
+						"{{realization_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION UPDATE R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE REALIZATION",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{realization_body}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION GET R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization/{{LNG}}/{{realization_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET REALIZATION",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var date = new Date();",
+							"",
+							"jsonData.content = date.toISOString();",
+							"",
+							"postman.setEnvironmentVariable(\"realization_body\", JSON.stringify(jsonData));",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization/{{LNG}}/{{realization_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization",
+						"{{LNG}}",
+						"{{realization_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUTHORIZATION DELETE R",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"auth_token\", jsonData.authorization);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"appid\": \"{{UPRODIT_APPID}}\",\n    \"env\": \"{{UPRODIT_ENV}}\",\n    \"uri\": \"https://{{UPRODIT_API}}/v2/profile/realization/{{realization_id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v1/authheader",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v1",
+						"authheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE REALIZATION",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{auth_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-uprodit-token",
+						"value": "{{personal_access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{UPRODIT_API}}/v2/profile/realization/{{realization_id}}",
+					"protocol": "https",
+					"host": [
+						"{{UPRODIT_API}}"
+					],
+					"path": [
+						"v2",
+						"profile",
+						"realization",
+						"{{realization_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
