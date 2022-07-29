@@ -109,7 +109,7 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Comwork',
+            title: 'Uprodit',
             items: [
               {
                 label: 'Home',
