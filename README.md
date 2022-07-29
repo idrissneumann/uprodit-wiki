@@ -1,7 +1,12 @@
 # Uprodit: documentation des API et formations
 
-Ce repo centralise l'ensemble des documentations et formations publiques mis à disposition pour les utilisateurs de [uprodit.com](https://www.uprodit.com) :
+Ce wiki centralise l'ensemble des documentations et formations publiques mis à disposition pour les utilisateurs de [uprodit.com](https://www.uprodit.com).
 
+Vous pouvez y accéder via ces deux moyens:
+* Via l'url publique: https://doc.uprodit.com
+* Via ce repo gitlab: https://gitlab.comwork.io/comwork_public/uprodit
+
+Voici les ressources disponibles:
 * [consommation des API](./uprodit_api.md)
 * [formation sur les API](./formation_slides.pdf)
 * [collections postman](./postman)
