@@ -4,7 +4,7 @@ services:
   uprodit_wiki_prod:
     restart: always
     container_name: uprodit_wiki_prod
-    image: rg.fr-par.scw.cloud/uprodit/uprodit_wiki:${VERSION}
+    image: rg.fr-par.scw.cloud/prodit/uprodit_wiki:${VERSION}
     networks:
       - uprodit_wiki
     ports:
