@@ -28,12 +28,15 @@ Il s'agit d'un style d'architecture basé sur des services web utilisant les tec
   * 500 : erreur technique (GET/PUT/POST/DELETE)
 * L'URI qui possède une signification importante pour l'appel d'un service : celle de permettre, par une simple lecture visuelle, d'identifier le service auquel on fait appel, voire dans le cas d'un appel de type GET, la ressource à récupérer.
 
-## Fournisseurs de service (silos)
+## Contrats d'interface
 
-Les fournisseurs de services sont les suivants :
+Vous trouverez le fichier WADL de notre API ici: https://api.uprodit.com
 
-* Prodit-ws : https://api.uprodit.com (principal fournisseur)
-* Prodit-se : https://search.uprodit.com (composant d'intégration avec Elasticsearch, uniquement pour les recherches de profils)
+Ce fichier fournis la structure des objets consommés et retournés par les différents Webservices (ces objets doivent être sérialisés/désérialisés en JSON).
+
+Vous pouvez utiliser le plugin Maven de CXF : [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) pour construire les objets en question.
+
+Nous envisageons dans le future de migrer vers Swagger. Vous avez aussi des [collections postman](./postman) à disposition.
 
 ## Authentification aux webservices de l'API
 
@@ -112,11 +115,3 @@ $ curl -H "Authorization: ${authorization}" -H "x-uprodit-token: ${token}" "http
 
 Pour éviter toute compromission, nous vous recommandons fortement d'utiliser ce token et de n'envoyer votre mot de passe qu'une fois que vous arrivez à expiration (vous aurez des erreurs 401 qui vous indiqueront qu'il faut de nouveau faire un `POST` sur l'api [`/v1/token`](https://api.uprodit.com)).
 
-## Contrats d'interfaces
-
-Les documentations et WADL est disponible ici : 
-* [API](https://api.uprodit.com)
-* [SEARCH](https://search.uprodit.com)
-
-Ces fichiers fournissent la structure des objets consommés et retournés par les différents Webservices (ces objets doivent être sérialisés/désérialisés en JSON).
-Vous pouvez utiliser le plugin Maven de CXF : [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) pour construire les objets en question
