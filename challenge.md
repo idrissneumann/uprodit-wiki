@@ -28,4 +28,4 @@ Les endpoints à utiliser sont:
 * la méthode `/v1/search/all`: pour la recherche par critères
 * la méthode `/v2/profile/picture/f/{id}`: pour récupérer les photos de profils en base64 pour les résultats de recherche (le paramètre `id` est à remplacer par la valeur de `image_id` des résultats précédents)
 
-L'appid à utiliser pour s'authentifier est `challenge_uprodit`, l'environnement `production` et le usecase `perso`. Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./uprodit_api.md) et également dans notre [formation](./formation_slides.pdf). Vous pouvez également vous aider des [collections postman](./postman).
+L'appid à utiliser pour s'authentifier est `challenge_uprodit`, l'environnement `production` et le usecase `perso`. Vous trouverez plus de détails sur comment consommer cette API dans [cette documentation](./api.md) et également dans notre [formation](./formation_slides.pdf). Vous pouvez également vous aider des [collections postman](./postman).

@@ -1,4 +1,4 @@
-# Uprodit: documentation des API et formations
+# Documentation uprodit
 
 Ce wiki centralise l'ensemble des documentations et formations publiques mis à disposition pour les utilisateurs de [uprodit.com](https://www.uprodit.com).
 
@@ -8,7 +8,7 @@ Vous pouvez y accéder via ces deux moyens:
 
 Voici les ressources disponibles:
 * [architecture technique de uprodit](./architecture.md)
-* [consommation des API](./uprodit_api.md)
+* [consommation des API](./api.md)
 * [formation sur les API](./formation_slides.pdf)
 * [collections postman](./postman)
 * [challenge](./challenge.md)
