@@ -2,9 +2,9 @@ const theme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Comwork wiki',
+  title: 'Uprodit wiki',
   tagline: 'Documentation publique de uprodit',
-  url: 'https://wiki.comwork.io',
+  url: 'https://doc.uprodit.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
