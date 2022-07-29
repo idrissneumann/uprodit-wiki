@@ -1,0 +1,11 @@
+.navbar__link--active {
+    color: #043d73 !important;
+}
+
+.menu__link--active {
+    color: #043d73 !important;
+}
+
+.breadcrumbs__link {
+    color: #043d73 !important;
+}

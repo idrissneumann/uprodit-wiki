@@ -1,6 +1,6 @@
 # Collections postman
 
-Vous trouverez ici les collections postman pour manipuler nos API:
+Vous trouverez ici quelques collections postman pour vous aider manipuler [nos API](../uprodit_api.md):
 
 * [UPRODIT SEARCH ALL](./UPRODIT%20SEARCH%20ALL.postman_collection.json)
 * [UPRODIT V2 PERSONAL](./UPRODIT%20V2%20PERSONAL.postman_collection.json)
