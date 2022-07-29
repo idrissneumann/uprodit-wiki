@@ -116,17 +116,13 @@ const config = {
                 to: 'https://www.uprodit.com',
               },
               {
-                label: 'Comwork',
-                to: 'https://www.comwork.io',
-              },
-              {
                 label: 'Gitlab',
                 to: 'https://gitlab.comwork.io/comwork_public/uprodit',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Comworkio SASU.`,
+        copyright: `Copyright © 2015 - ${new Date().getFullYear()} Uprodit.`,
       },
       prism: {
         theme: theme
