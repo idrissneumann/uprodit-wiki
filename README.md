@@ -7,6 +7,7 @@ Vous pouvez y accéder via ces deux moyens:
 * Via ce repo gitlab: https://gitlab.comwork.io/comwork_public/uprodit
 
 Voici les ressources disponibles:
+* [architecture technique de uprodit](./architecture.md)
 * [consommation des API](./uprodit_api.md)
 * [formation sur les API](./formation_slides.pdf)
 * [collections postman](./postman)

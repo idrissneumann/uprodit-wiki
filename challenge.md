@@ -4,9 +4,7 @@
 
 Reproduire le moteur de recherche de uprodit.com: https://www.uprodit.com/profile/all/search/perso
 
-<div align="center">
 ![qr_search_engine](./img/qr_search_engine.png)
-</div>
 
 Voici à quoi il ressemble:
 
@@ -24,9 +22,7 @@ Voici à quoi il ressemble:
 
 Voici les contrats d'interface de l'API (format wadl) [api.uprodit.com](https://api.uprodit.com):
 
-<div align="center">
 ![qr_api](./img/qr_api.png)
-</div>
 
 Les endpoints à utiliser sont:
 * la méthode `/v1/search/all`: pour la recherche par critères
