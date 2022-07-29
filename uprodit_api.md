@@ -1,8 +1,4 @@
-# API uprodit : Consommation des webservices
-
-## Table des matières
-
-[[_TOC_]]
+# API uprodit : consommation des webservices
 
 ## Objectifs de cette documentation
 

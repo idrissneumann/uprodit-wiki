@@ -1,0 +1,6 @@
+version: '3.3'
+
+services:
+  uprodit_wiki:
+    image: uprodit_wiki:latest
+    build: .

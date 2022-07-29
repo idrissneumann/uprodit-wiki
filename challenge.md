@@ -1,9 +1,5 @@
 # Challenge uprodit
 
-## Table des matières
-
-[[_TOC_]]
-
 ## Travail à faire
 
 Reproduire le moteur de recherche de uprodit.com: https://www.uprodit.com/profile/all/search/perso

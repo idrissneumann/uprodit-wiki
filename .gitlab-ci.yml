@@ -1,0 +1,25 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - imagesbuilder
+  rules: 
+    - if: $CI_COMMIT_REF_NAME =~ /main/ 
+  script:
+    - chmod +x ./ci/deliver.sh
+    - ./ci/deliver.sh
+
+deploy:
+  stage: deploy
+  needs:
+    - build
+  script:
+    - chmod +x ./ci/deploy.sh
+    - ./ci/deploy.sh
+  rules: 
+    - if: $CI_COMMIT_REF_NAME =~ /main/ 
+  tags:
+    - web

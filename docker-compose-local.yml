@@ -1,0 +1,7 @@
+version: '3.3'
+
+services:
+  uprodit_wiki:
+    build: .
+    ports:
+      - "3000:80"

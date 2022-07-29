@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  uprodit_wiki_prod:
+    restart: always
+    container_name: uprodit_wiki_prod
+    image: rg.fr-par.scw.cloud/uprodit/uprodit_wiki:${VERSION}
+    networks:
+      - uprodit_wiki
+    ports:
+      - "5335:80"
+
+networks:
+  uprodit_wiki:
+    driver: bridge
