@@ -1,5 +1,7 @@
 # Documentation uprodit
 
+![uprodit](./img/uprodit_logo.png)
+
 Ce wiki centralise l'ensemble des documentations et formations publiques mis à disposition pour les utilisateurs de [uprodit.com](https://www.uprodit.com).
 
 Vous pouvez y accéder via ces deux moyens:

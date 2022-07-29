@@ -1,3 +1,3 @@
 # Architecture technique
 
-![arch_prodit](./img/arch_prodit.png)
+![arch_prodit](./img/arch_project.jpg)
