@@ -1,9 +1,5 @@
 # API uprodit : Consommation des webservices
 
-## Table des matières
-
-[[_TOC_]]
-
 ## Objectifs de cette documentation
 
 Cette documentation vise à fournir tout les éléments permettant de consommer les webservices de uprodit par des pilotes externes (application android par exemple).
