@@ -12,6 +12,7 @@ RUN rm -rf docs/* && rm -rf blog/*
 
 COPY .docker/docusaurus/docusaurus.config.js .
 COPY img/uprodit_logo.png static/img/uprodit_logo.png
+COPY img/favicon.png static/img/favicon.png
 COPY .docker/docusaurus/custom.css src/css/custom.css
 COPY .docker/docusaurus/index.js src/pages/index.js
 

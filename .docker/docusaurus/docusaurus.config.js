@@ -8,7 +8,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/uprodit_logo.png',
+  favicon: 'img/favicon.png',
 
   i18n: {
     defaultLocale: 'en',
