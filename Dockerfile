@@ -20,6 +20,7 @@ COPY . docs/
 
 RUN rm -rf docs/ci && \
     npm i && \
+    npm i --save docusaurus-lunr-search && \
     npm run build
 
 # Stage run
