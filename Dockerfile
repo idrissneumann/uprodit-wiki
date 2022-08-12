@@ -4,9 +4,9 @@ ARG NGINX_VERSION=1.15
 # Stage build
 FROM node:${NODE_VERSION} AS doc_builder
 
-RUN npx create-docusaurus@latest comwork-wiki classic
+RUN npx create-docusaurus@latest uprodit-wiki classic
 
-WORKDIR /comwork-wiki
+WORKDIR /uprodit-wiki
 
 RUN rm -rf docs/* && rm -rf blog/*
 
@@ -19,6 +19,12 @@ COPY .docker/docusaurus/index.js src/pages/index.js
 COPY . docs/
 
 RUN rm -rf docs/ci && \
+    npm i -g api-spec-converter && \
+    api-spec-converter --from=wadl --to=swagger_2 --syntax=json --order=alpha https://api.uprodit.com > api_endpoints.json && \
+    npx swagger-markdown -i api_endpoints.json && \
+    rm -rf api_endpoints.json && \
+    sed -i "s/api_endpoints/Endpoints\ de\ l\'API/g" api_endpoints.md && \
+    mv api_endpoints.md docs/api/api_endpoints.md && \
     npm i && \
     npm i --save docusaurus-lunr-search && \
     npm run build
@@ -30,7 +36,7 @@ COPY .docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 COPY .docker/nginx/docker-entrypoint.sh /docker-entrypoint.sh
 
-COPY --from=doc_builder /comwork-wiki/build/ /usr/share/nginx/html
+COPY --from=doc_builder /uprodit-wiki/build/ /usr/share/nginx/html
 
 RUN chmod +x /docker-entrypoint.sh
 

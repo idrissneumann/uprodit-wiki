@@ -32,11 +32,13 @@ Il s'agit d'un style d'architecture basé sur des services web utilisant les tec
 
 Vous trouverez le fichier WADL de notre API ici: https://api.uprodit.com
 
+Vous trouverez également la définition des endpoints [ici](./api_endpoints.md).
+
 Ce fichier fournis la structure des objets consommés et retournés par les différents Webservices (ces objets doivent être sérialisés/désérialisés en JSON).
 
 Vous pouvez utiliser le plugin Maven de CXF : [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) pour construire les objets en question.
 
-Nous envisageons dans le future de migrer vers Swagger. Vous avez aussi des [collections postman](./postman) à disposition.
+Nous envisageons dans le future de migrer vers Swagger. Vous avez aussi des [collections postman](./postman/README.md) à disposition.
 
 ## Authentification aux webservices de l'API
 
@@ -87,7 +89,7 @@ curl -H "Authorization: ${authorization}" "https://api.uprodit.com/v2/profile/pe
 
 Exemple de requête de recherche:
 
-![curl_api](./img/curl_api.png)
+![curl_api](../img/curl_api.png)
 
 ### Authentification d'un utilisateur
 
