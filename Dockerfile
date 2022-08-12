@@ -23,8 +23,8 @@ RUN rm -rf docs/ci && \
     api-spec-converter --from=wadl --to=swagger_2 --syntax=json --order=alpha https://api.uprodit.com > api_endpoints.json && \
     npx swagger-markdown -i api_endpoints.json && \
     rm -rf api_endpoints.json && \
-    sed -i "s/api_endpoints/Endpoints\ de\ l\'API/g" api_endpoints.md && \
     mv api_endpoints.md docs/api/api_endpoints.md && \
+    sed -i "1 s/^\#/\# Contrats d\'interfaces/" docs/api/api_endpoints.md && \
     npm i && \
     npm i --save docusaurus-lunr-search && \
     npm run build
