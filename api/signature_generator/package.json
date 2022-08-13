@@ -1,0 +1,15 @@
+{
+  "name": "signature_generator",
+  "version": "1.0.0",
+  "description": "Uprodit api signature generator",
+  "main": "signature.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hmacsha1": "^1.0.0",
+    "uuid": "^8.3.2"
+  }
+}

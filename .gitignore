@@ -72,3 +72,4 @@ hs_err_pid*.log
 *.pem
 
 .env
+node_modules/
