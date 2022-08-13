@@ -66,6 +66,36 @@ Ces paramètres sont concaténés sous la forme :
 Auth auth_consumer_key=valeur&auth_callback=valeur&...
 ```
 
+Voici un exemple de fonction en node.js pour générer la signature :
+
+```javascript
+const hmacsha1 = require('hmacsha1');
+const uuid = require('uuid');
+
+function generateSignature(appid, env, uri) {
+  auth_signature_method = 'HMAC-SHA1';
+  auth_consumer_key = encodeURIComponent(hmacsha1(appid, env));
+  auth_token = uuid.v4();
+  uri_path = uri.replace(new RegExp('http(s)?://[^/]*'), '')
+  auth_signature = encodeURIComponent(hmacsha1(appid, uri_path + auth_token));
+  auth_nonce = encodeURIComponent(hmacsha1(appid, uuid.v4()));
+  auth_callback = encodeURIComponent(uri_path + auth_token);
+  auth_timestamp = new Date().getTime();
+
+  return `Auth ?auth_signature=${auth_signature}&auth_nonce=${auth_nonce}&auth_callback=${auth_callback}&auth_timestamp=${auth_timestamp}&auth_token=${auth_token}&auth_signature_method=${auth_signature_method}&auth_consumer_key=${auth_consumer_key}`;
+}
+
+console.log(generateSignature("challenge_uprodit", "production", "https://api.uprodit.com/v2/profile/personal/en/51"));
+```
+
+Les dépendances à installer pour faire tourner ce code :
+
+```shell
+npm init
+npm install hmacsha1 --save
+npm install uuid --save
+```
+
 Il enfin également possible de générer le header via l'api [`/v1/authheader`](https://api.uprodit.com):
 
 ```shell
