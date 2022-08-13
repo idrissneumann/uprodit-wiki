@@ -79,7 +79,7 @@ function generateSignature(appid, env, uri) {
   uri_path = uri.replace(new RegExp('http(s)?://[^/]*'), '')
   auth_signature = encodeURIComponent(hmacsha1(appid, uri_path + auth_token));
   auth_nonce = encodeURIComponent(hmacsha1(appid, uuid.v4()));
-  auth_callback = encodeURIComponent(uri_path + auth_token);
+  auth_callback = encodeURIComponent(uri_path);
   auth_timestamp = new Date().getTime();
 
   return `Auth ?auth_signature=${auth_signature}&auth_nonce=${auth_nonce}&auth_callback=${auth_callback}&auth_timestamp=${auth_timestamp}&auth_token=${auth_token}&auth_signature_method=${auth_signature_method}&auth_consumer_key=${auth_consumer_key}`;
