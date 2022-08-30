@@ -12,7 +12,7 @@ const config = {
 
   plugins: [
     require.resolve('docusaurus-lunr-search'),
-
+    require.resolve('docusaurus-plugin-matomo')
   ],
 
   i18n: {
