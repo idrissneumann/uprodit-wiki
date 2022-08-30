@@ -27,6 +27,7 @@ RUN rm -rf docs/ci && \
     sed -i "1 s/^\#/\# Contrats d\'interfaces/" docs/api/api_endpoints.md && \
     npm i && \
     npm i --save docusaurus-lunr-search && \
+    npm i --save docusaurus-plugin-matomo && \
     npm run build
 
 # Stage run
