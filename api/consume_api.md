@@ -66,7 +66,7 @@ Ces paramètres sont concaténés sous la forme :
 Auth auth_consumer_key=valeur&auth_callback=valeur&...
 ```
 
-Voici un exemple de fonction en javascript pour générer la signature :
+Voici un exemple de fonction en node.js pour générer la signature :
 
 ```javascript
 const hmacsha1 = require('hmacsha1');
@@ -87,6 +87,29 @@ function generateSignature(appid, env, uri) {
 
 console.log(generateSignature("challenge_uprodit", "production", "https://api.uprodit.com/v2/profile/personal/en/51"));
 ```
+
+La même chose en typescript pour une application en React:
+
+```typescript
+import hmacsha1 from 'hmacsha1'
+import { v4 } from 'uuid'
+
+const generateSignature = (appid, env, uri) => {
+    var auth_signature_method = 'HMAC-SHA1';
+    var auth_consumer_key = encodeURIComponent(hmacsha1(appid, env));
+    var auth_token = v4();
+    var uri_path = uri.replace(new RegExp('http(s)?://[^/]*'), '')
+    var auth_signature = encodeURIComponent(hmacsha1(appid, uri_path + auth_token));
+    var auth_nonce = encodeURIComponent(hmacsha1(appid, v4()));
+    var auth_callback = encodeURIComponent(uri_path);
+    var auth_timestamp = new Date().getTime();
+  
+    return `Auth ?auth_signature=${auth_signature}&auth_nonce=${auth_nonce}&auth_callback=${auth_callback}&auth_timestamp=${auth_timestamp}&auth_token=${auth_token}&auth_signature_method=${auth_signature_method}&auth_consumer_key=${auth_consumer_key}`;
+}
+
+export default generateSignature;
+```
+
 
 Les dépendances à installer pour faire tourner ce code (avec node.js ou autre runtime JS) :
 

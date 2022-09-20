@@ -12,7 +12,7 @@ Voici à quoi il ressemble:
 
 ## Consignes
 
-* Technologie frontend de type SPA : Angular, React ou Vue.JS ou bien une application mobile
+* Technologie frontend de type SPA : Angular, React, Svelte ou Vue.JS ou bien une application mobile
 * Pusher la solution sur un repo git publique. Vous pouvez utiliser le provider de votre choix comme [github](https://github.com), [gitlab](https://gitlab.com) ou [bitbucket](https://bitbucket.org).
 * Déployer l'application sur un cloud tel que [Heroku](https://www.heroku.com) ou [Netlify](https://www.netlify.com) ou autre hébergeur de votre choix (il faut une URL en https)
 * Donnez des indications dans le fichier `README.md` de comment builder votre application en local avec des captures d'écran. S'il s'agit d'une application mobile, pushez aussi le fichier .apk compilé. Pour une application web, un `docker-compose.yml` sera grandement apprécié pour faciliter le démarrage sans installation des dépendances
