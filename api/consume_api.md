@@ -66,7 +66,7 @@ Ces paramètres sont concaténés sous la forme :
 Auth auth_consumer_key=valeur&auth_callback=valeur&...
 ```
 
-Voici un exemple de fonction en node.js pour générer la signature :
+Voici un exemple de fonction en javascript pour générer la signature :
 
 ```javascript
 const hmacsha1 = require('hmacsha1');
@@ -88,7 +88,15 @@ function generateSignature(appid, env, uri) {
 console.log(generateSignature("challenge_uprodit", "production", "https://api.uprodit.com/v2/profile/personal/en/51"));
 ```
 
-La même chose en typescript pour une application en React:
+Les dépendances à installer pour faire tourner ce code (avec node.js ou autre runtime JS) :
+
+```shell
+npm init
+npm install hmacsha1 --save
+npm install uuid --save
+```
+
+La même chose en typescript (pour une application en React) :
 
 ```typescript
 import hmacsha1 from 'hmacsha1'
@@ -108,15 +116,6 @@ const generateSignature = (appid, env, uri) => {
 }
 
 export default generateSignature;
-```
-
-
-Les dépendances à installer pour faire tourner ce code (avec node.js ou autre runtime JS) :
-
-```shell
-npm init
-npm install hmacsha1 --save
-npm install uuid --save
 ```
 
 Il enfin également possible de générer le header via l'api [`/v1/authheader`](https://api.uprodit.com):
