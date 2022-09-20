@@ -18,6 +18,12 @@ Voici à quoi il ressemble:
 * Donnez des indications dans le fichier `README.md` de comment builder votre application en local avec des captures d'écran. S'il s'agit d'une application mobile, pushez aussi le fichier .apk compilé. Pour une application web, un `docker-compose.yml` sera grandement apprécié pour faciliter le démarrage sans installation des dépendances
 * Envoyer les liens à l'adresse `challenge@comwork.io` (faites le maximum, n'hésitez pas à nous envoyer votre repo même si vous n'avez pas pu faire les partie docker ou hébergement)
 
+Pas de grands efforts attendus sur le design, quelque chose dans ce style suffit amplement:
+
+![challenge_proto](./img/challenge_proto.png)
+
+Si vous avez envie de faire un beau design, c'est toujours appréciable ! Mais nous analysons davantage la capacité à intégrer notre API dans des applications clients.
+
 ## Endpoints à utiliser
 
 Voici les contrats d'interface de l'API (format wadl) [api.uprodit.com](https://api.uprodit.com):
