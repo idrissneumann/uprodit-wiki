@@ -114,6 +114,11 @@ const config = {
             label: 'Gitlab',
             position: 'right',
           },
+          {
+            to: 'https://uprodit-tech.slack.com',
+            label: 'Slack',
+            position: 'right',
+          },
         ],
       },
       footer: {
@@ -129,6 +134,10 @@ const config = {
               {
                 label: 'Gitlab',
                 to: 'https://gitlab.comwork.io/comwork_public/uprodit',
+              },
+              {
+                label: 'Slack',
+                to: 'https://uprodit-tech.slack.com',
               },
             ],
           },

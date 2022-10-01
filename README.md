@@ -10,3 +10,5 @@ Voici les ressources disponibles:
 * [Architecture technique de uprodit](./architecture.md)
 * [Restful API](./api/README.md)
 * [Challenge](./challenge.md)
+
+Vous pouvez également nous demander une invitation pour notre [workspace Slack](https://uprodit-tech.slack.com), envoyez nous un email à `contact@comwork.io` pour y être invité(e).
