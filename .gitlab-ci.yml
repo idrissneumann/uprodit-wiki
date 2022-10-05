@@ -19,6 +19,7 @@ deploy:
   script:
     - chmod +x ./ci/deploy.sh
     - ./ci/deploy.sh
+    - ./ci/notif.sh
   rules: 
     - if: $CI_COMMIT_REF_NAME =~ /main/ 
   tags:
