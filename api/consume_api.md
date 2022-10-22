@@ -127,8 +127,6 @@ $ curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"XXXXXXX","env":"YYY
 
 You'll have to pass this value in the `Authorization` header of the webservice you want to invoke (which corresponds to the uri passed in the body).
 
-Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandée en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir implémenté localement le code qui vous permet de générer la signature à partir de l'`appid` (donc reprendre la lib java ws-cxf-ext ou le code javascript précédent ou encore ré-implémenter la même chose dans le langage que vous utilisez).
-
 This solution is suitable for quick tests but __it's not recommended in production__ because you'll have big performances issues multiplying by 2 the number of http requests. It's far more better to have implemented or imported locally a signature generation function.
 
 Small hack if you make your calls in shell, you can use `jq` to directly pick the value of the token in a variable like this:
