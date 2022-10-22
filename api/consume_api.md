@@ -17,7 +17,7 @@ It is a style of architecture based on webservices using the following principle
   * `PATCH` for partial updating partielle of a resource in database (or other persistent support)
   * `GET` for searching and reading a resource in database (or other persistent support)
   * `DELETE` for removing a resource from the database (or other persistent support)
-* Quelques codes retours du protocole HTTP qui permettent de détecter la bonne exécution d'un webservice REST ou bien d'identifier le type d'erreur rencontrée :
+* Some HTTP return codes which allow to detect the successful execution of a webservice or to identify the kind of encountered errors:
   * `200`: successful reception of a resource (`GET`)
   * `201`: successful persistence of a resource (`PUT`/`POST`)
   * `204`: no content (it could mean that a `DELETE` or `PUT` were sucessfuly executed or that the resource is not existing in the case of a `GET` requests, like `404` return code)
@@ -40,33 +40,33 @@ You can use the [wadl2java](http://cxf.apache.org/docs/jaxrs-services-descriptio
 
 We're planning to use Swagger instead of WADL in the future. You also can use our available [postman collections](./postman/README.md).
 
-## Authentification aux webservices de l'API
+## API Authentication
 
-### Authentication d'une application
+### Authenticating an application to our API
 
-La quasi-totalité des webservices sont authentifiés par application (il faut faire une demande d'ajout d'un `appid` aux équipes de uprodit.com pour pouvoir y accéder).
+Almost all our webservices are authenticated for each consumers/applications (you have to ask the uprodit.com team for getting a valid `appid` in order to be granted).
 
-La solution mise en oeuvre est la signature HMAC avec : https://ws-cxf-ext.github.io/ws-cxf-ext/
+The solution implemented is the HMAC signature with our `ws-cxf-ext` library: https://ws-cxf-ext.github.io/ws-cxf-ext/
 
-Pour celles et ceux qui veulent utiliser la partie client de cette solution : https://gitlab.comwork.io/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
+If your're consuming our API with a Java client application, you can use the client part of our library: https://gitlab.comwork.io/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
 
-Pour les autres consommateurs, passer les paramètres suivants dans un paramètre header "Authorization":
+If you can't use our client library (because you're using another programing language for example), you have to concatenate and pass the following parameters in the `Authorization` header:
 
-* `auth_consumer_key` : chiffrage hmac / sha1 de l'environnement avec l'`appid` ;
-* `auth_callback` : url du webservice avec paramètres ;
-* `auth_nonce` : token généré aléatoirement (`UUID.randomUUID().toString()`) chiffré en hmac / sha1 via l'`appid` ;
-* `auth_token` : token généré aléatoirement (pas le même que auth_nonce)
-* `auth_signature` : concaténation de l'uri et du token (`auth_token`) chiffrage via la l'`appid` ;
+* `auth_consumer_key` : environment HMAC-SHA1 hashing with the `appid`
+* `auth_callback` : webservice url (with the query params)
+* `auth_nonce` : random generated token (you can use a random UUID) hashed in HMAC-SHA1 with the `appid`
+* `auth_token` : random generated token (do not use the same one you use with the `auth_nonce` parameter)
+* `auth_signature` : URI and token concatenation (`auth_token`) hashed in HMAC-SHA1 with the `appid`
 * `auth_timestamp` : timestamp
-* `auth_signature_method` : toujours "HMAC-SHA1"
+* `auth_signature_method` : `HMAC-SHA1` as string constant
 
-Ces paramètres sont concaténés sous la forme :
+Those parameters must be concatenates with the following form:
 
 ```
 Auth auth_consumer_key=valeur&auth_callback=valeur&...
 ```
 
-Voici un exemple de fonction en javascript pour générer la signature :
+Here's an example of javascript function for generating this signature:
 
 ```javascript
 const hmacsha1 = require('hmacsha1');
@@ -88,7 +88,7 @@ function generateSignature(appid, env, uri) {
 console.log(generateSignature("challenge_uprodit", "production", "https://api.uprodit.com/v2/profile/personal/en/51"));
 ```
 
-Les dépendances à installer pour faire tourner ce code (avec node.js ou autre runtime JS) :
+Here's the npm dependancy you need to install for making it works with node.js or a frontend framework like Angular, React of Vue.js:
 
 ```shell
 npm init
@@ -96,7 +96,7 @@ npm install hmacsha1 --save
 npm install uuid --save
 ```
 
-La même chose en typescript (pour une application en React) :
+The typescript version:
 
 ```typescript
 import hmacsha1 from 'hmacsha1'
