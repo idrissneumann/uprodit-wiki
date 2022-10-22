@@ -1,20 +1,20 @@
-# Challenge uprodit
+# Challenge
 
-## Travail à faire
+## Work to do
 
-Reproduire le moteur de recherche de uprodit.com: https://www.uprodit.com/profile/all/search/perso
+Replicate the search engine of uprodit.com: https://www.uprodit.com/profile/all/search/perso
 
 ![qr_search_engine](./img/qr_search_engine.png)
 
-Voici à quoi il ressemble:
+This is what it looks like:
 
 ![uprodit_search_engine](./img/uprodit_search_engine.png)
 
-## Consignes
+## Instructions
 
-* Technologie frontend de type SPA : Angular, React, Svelte ou Vue.JS ou bien une application mobile
-* Pusher la solution sur un repo git publique. Vous pouvez utiliser le provider de votre choix comme [github](https://github.com), [gitlab](https://gitlab.com) ou [bitbucket](https://bitbucket.org).
-* Déployer l'application sur un cloud tel que [Heroku](https://www.heroku.com) ou [Netlify](https://www.netlify.com) ou autre hébergeur de votre choix (il faut une URL en https)
+* Deliver either a SPA (Single Page Application) using client-side JS framework like Angular, React, Svelte or Vue.JS or a mobile application
+* Push your code in a public git repo with an opensource licence (MIT, Apache 2.0, GPL, whatever). You can use any public git provider you want like [github](https://github.com), [gitlab](https://gitlab.com) or [bitbucket](https://bitbucket.org)
+* Auto-deploy your application in a PaaS like [Heroku](https://www.heroku.com) or [Netlify](https://www.netlify.com) or any hosting cloud provider (you have to provide us an available https url)
 * Donnez des indications dans le fichier `README.md` de comment builder votre application en local avec des captures d'écran. S'il s'agit d'une application mobile, pushez aussi le fichier .apk compilé. Pour une application web, un `docker-compose.yml` sera grandement apprécié pour faciliter le démarrage sans installation des dépendances. 
 * Faire également un `Dockerfile` en respectant les bonnes pratiques de prod sera encore davantage appréciable, pour cela vous pouvez également suivre [cette formation sur docker](https://gitlab.comwork.io/comwork_public/training/docker).
 * Envoyer les liens à l'adresse `challenge@comwork.io` (faites le maximum, n'hésitez pas à nous envoyer votre repo même si vous n'avez pas pu faire les partie docker ou hébergement). Vous pouvez également nous demander une invitation pour notre [workspace Slack](https://uprodit-tech.slack.com), envoyez nous un email à `challenge@comwork.io` pour y être invité(e).
