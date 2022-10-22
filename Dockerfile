@@ -24,7 +24,7 @@ RUN rm -rf docs/ci && \
     npx swagger-markdown -i api_endpoints.json && \
     rm -rf api_endpoints.json && \
     mv api_endpoints.md docs/api/api_endpoints.md && \
-    sed -i "1 s/^\#/\# Contrats d\'interfaces/" docs/api/api_endpoints.md && \
+    sed -i "1 s/^\#/\# API endpoints definitions/" docs/api/api_endpoints.md && \
     npm i && \
     npm i --save docusaurus-lunr-search@2.1.15 && \
     npm i --save docusaurus-plugin-matomo && \

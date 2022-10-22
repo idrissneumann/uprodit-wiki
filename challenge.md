@@ -1,4 +1,4 @@
-# Challenge
+# Uprodit challenge
 
 We're often looking for new talents who can contribute to our projects and also gives-us feedback on our APIs, that's why we're providing this challenge: replicate the [search engine of uprodit](https://www.uprodit.com/profile/all/search/perso)! 
 
