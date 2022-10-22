@@ -12,20 +12,20 @@ It is a style of architecture based on webservices using the following principle
 
 * The format of resources (business data) with the semantics of data description languages ​​such as XML or JSON
 * Some HTTP protocol directives that identify the operations which will be performed by the called webservice:
-  * POST pour la création d’une ressource en base (ou autre support de persistance) ;
-  * PUT pour la modification d’une ressource en base (ou autre support de persistance) ;
-  * PATCH pour la modification partielle d’une ressource en base (ou autre support de persistance) ;
-  * GET pour la récupération de ressources archivées en base (ou autre support de persistance) ;
-  * DELETE pour la suppression de ressources persistées en base où sur d'autres supports.
+  * `POST` for creating and persisting a resource in database (or other persistent support)
+  * `PUT` for updating a resource in database (or other persistent support)
+  * `PATCH` for partial updating partielle of a resource in database (or other persistent support)
+  * `GET` for searching and reading a resource in database (or other persistent support)
+  * `DELETE` for removing a resource from the database (or other persistent support)
 * Quelques codes retours du protocole HTTP qui permettent de détecter la bonne exécution d'un webservice REST ou bien d'identifier le type d'erreur rencontrée :
-  * 200 : bonne réception d'une ressource (GET)
-  * 201 : bonne persistance d'une ressource (PUT/POST)
-  * 204 : pas de contenu (peut indiquer la bonne exécution d'un DELETE ou d'un PUT ou bien que la ressource n'existe pas dans le cas d'un GET à l'instar du code 404)
-  * 400 : paramètres de la requête invalide (GET/PUT/POST/DELETE)
-  * 401 : problème d'authentification du consommateur (GET/PUT/POST/DELETE)
-  * 403 : problèmes de droits d'accès (GET/PUT/POST/DELETE)
-  * 404 : ressource inexistante  (GET/PUT/POST/DELETE)
-  * 500 : erreur technique (GET/PUT/POST/DELETE)
+  * `200`: successful reception of a resource (`GET`)
+  * `201`: successful persistence of a resource (`PUT`/`POST`)
+  * `204`: no content (it could mean that a `DELETE` or `PUT` were sucessfuly executed or that the resource is not existing in the case of a `GET` requests, like `404` return code)
+  * `400`: invalid parameters (`GET`/`PUT`/`POST`/`DELETE`)
+  * `401`: authentication issue (`GET`/`PUT`/`POST`/`DELETE`)
+  * `403`: forbidden, access rights issue (`GET`/`PUT`/`POST`/`DELETE`)
+  * `404`: the resources or restful endpoint not exists (`GET`/`PUT`/`POST`/`DELETE`)
+  * `50X`: technical errors on the server-side (`GET`/`PUT`/`POST`/`DELETE`)
 * L'URI qui possède une signification importante pour l'appel d'un service : celle de permettre, par une simple lecture visuelle, d'identifier le service auquel on fait appel, voire dans le cas d'un appel de type GET, la ressource à récupérer.
 
 ## Contrats d'interface
