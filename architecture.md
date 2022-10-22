@@ -7,6 +7,7 @@
 * Docker
 * Java OpenJDK 17
 * Maven
+* Nginx
 * Tomcat
 * Spring framework
 * Vert.x
