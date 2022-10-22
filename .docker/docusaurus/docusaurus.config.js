@@ -3,7 +3,7 @@ const theme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Uprodit wiki',
-  tagline: 'Documentation publique de uprodit',
+  tagline: 'Public documentation of uprodit',
   url: 'https://doc.uprodit.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -55,7 +55,7 @@ const config = {
       metadata: [
         {
           name: 'description', 
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
         {
           name: 'keywords', 
@@ -75,11 +75,11 @@ const config = {
         },
         {
           property: 'og:site_name',
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
         {
           property: 'og:description',
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
         {
           property: 'og:url',
@@ -91,15 +91,15 @@ const config = {
         },
         {
           property: 'twitter:description',
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
         {
           property: 'twitter:title',
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
         {
           property: 'og:type',
-          content: 'Documentation publique de uprodit'
+          content: 'Public documentation of uprodit'
         },
       ],
       navbar: {
