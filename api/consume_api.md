@@ -129,7 +129,7 @@ You'll have to pass this value in the `Authorization` header of the webservice y
 
 Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandée en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir implémenté localement le code qui vous permet de générer la signature à partir de l'`appid` (donc reprendre la lib java ws-cxf-ext ou le code javascript précédent ou encore ré-implémenter la même chose dans le langage que vous utilisez).
 
-This solution is suitable for quick tests but __is not recommended in production__ because you'll have big performances issues doubling the number of http requests. It's far more better to have implemented or imported locally a signature generation function.
+This solution is suitable for quick tests but __it's not recommended in production__ because you'll have big performances issues multiplying by 2 the number of http requests. It's far more better to have implemented or imported locally a signature generation function.
 
 Small hack if you make your calls in shell, you can use `jq` to directly pick the value of the token in a variable like this:
 
@@ -147,14 +147,14 @@ Search query example:
 
 ![curl_api](../img/curl_api.png)
 
-### Authentification d'un utilisateur
+### User authentication
 
-Un grand nombre d'API demandent un contrôle de droits des utilisateurs soit via les headers suivants :
+Some API are also checking the connected user permissions either via the following two headers:
 
-* `x-uprodit-username`: email de l'utilisateur
-* `x-uprodit-password`: password de l'utilisateur
+* `x-uprodit-username`: user's email
+* `x-uprodit-password`: user's password
 
-Soit le header `x-uprodit-token`: il s'agit d'un token ayant une validité de 30 jours, généré avec l'api [`/v1/token`](https://api.uprodit.com) de la façon suivante:
+Or the `x-uprodit-token` header which is a 30 days validity token generated with the [`/v1/token`](https://api.uprodit.com) restful endpoints like this:
 
 ```shell
 $ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"challenge_uprodit","env":"production","uri":"https://api.uprodit.com/v1/token"}' -H "Content-Type: application/json" 2>/dev/null|jq .authorization -r)
@@ -162,7 +162,7 @@ $ curl -X POST https://api.uprodit.com/v1/token -H "Authorization: ${authorizati
 {"token": "TOKEN_BASE64_VALUE"}
 ```
 
-De la même façon, si vous faite du shell, petit hack avec `jq` pour récupérer les valeurs plus vite:
+Small hack with `jq` if your using shell scripts:
 
 ```shell
 $ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"challenge_uprodit","env":"production","uri":"https://api.uprodit.com/v1/token"}' -H "Content-Type: application/json" 2>/dev/null|jq .authorization -r)
@@ -171,5 +171,4 @@ $ authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"cha
 $ curl -H "Authorization: ${authorization}" -H "x-uprodit-token: ${token}" "https://api.uprodit.com/v1/user/1" -v
 ```
 
-Pour éviter toute compromission, nous vous recommandons fortement d'utiliser ce token et de n'envoyer votre mot de passe qu'une fois que vous arrivez à expiration (vous aurez des erreurs 401 qui vous indiqueront qu'il faut de nouveau faire un `POST` sur l'api [`/v1/token`](https://api.uprodit.com)).
-
+In order to avoid compromising your password, we __strongly__ advise you to use this token must of the time and only use your login/password for generating a new token using the [`/v1/token`](https://api.uprodit.com) restful endpoint, when your current token is expired (you'll have `401` errors when it's the case).
