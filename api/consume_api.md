@@ -1,17 +1,17 @@
-# Consommation des API
+# How to consume our API
 
-## Objectifs de cette documentation
+## Objectives
 
-Cette documentation vise à fournir tout les éléments permettant de consommer les webservices de uprodit par des pilotes externes (application android par exemple).
+This documentation aims to provide all the knowledge allowing to consume the uprodit's webservices by external consumers (a mobile application for example).
 
-## Rappel architecture RESTful
+## Insights about the RESTful architecture
 
-L'architecture implémentée au sein du projet "uprodit" est une architecture distribuée dite "RESTful", c'est à dire qui utilise des webservices REST (pour "REpresentational State Transfert").
+The implemented architecture is a distributed architecture known as "RESTful". It means that uprodit is providing "REST webservices" (for "Representational State Transfer").
 
-Il s'agit d'un style d'architecture basé sur des services web utilisant les technologies suivantes :
+It is a style of architecture based on webservices using the following principles:
 
-* Le format des ressources (données métier comme les dossiers de commandes ou autres) grâce aux sémantiques des langages de description de données tels que XML ou JSON.
-* Quelques directives du protocole HTTP qui permettent d'identifier les opérations à exécuter par le service appelé. Il s'agit des directives suivantes :
+* The format of resources (business data) with the semantics of data description languages ​​such as XML or JSON
+* Some HTTP protocol directives that identify the operations which will be performed by the called webservice:
   * POST pour la création d’une ressource en base (ou autre support de persistance) ;
   * PUT pour la modification d’une ressource en base (ou autre support de persistance) ;
   * PATCH pour la modification partielle d’une ressource en base (ou autre support de persistance) ;
