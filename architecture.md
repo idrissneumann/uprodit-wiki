@@ -4,6 +4,7 @@
 
 ## Used technologies
 
+* [RESTful webservices](./api/consume_api.md)
 * Docker
 * Java OpenJDK 17
 * Maven
