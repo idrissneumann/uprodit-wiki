@@ -41,6 +41,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       matomo: {
         matomoUrl: 'https://matomo.comwork.io/',
         siteId: '21',
