@@ -28,7 +28,7 @@ It is a style of architecture based on webservices using the following principle
   * `50X`: technical errors on the server-side (`GET`/`PUT`/`POST`/`DELETE`)
 * The URI which has an important meaning for the invocation of a webservice: allowing, by a simple visual reading, to identify the resource.
 
-## Interface contract
+## Interfaces
 
 You'll find [here](./api_endpoints.md) the RESTful endpoints definitions.
 

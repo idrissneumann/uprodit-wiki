@@ -28,7 +28,7 @@ You also can ask for joining our [slack workspace](https://uprodit-tech.slack.co
 
 ## Restful endpoints to use
 
-Here's the interface contract (wadl file): [api.uprodit.com](https://api.uprodit.com):
+Here's the interfaces (wadl file): [api.uprodit.com](https://api.uprodit.com):
 
 ![qr_api](./img/qr_api.png)
 
