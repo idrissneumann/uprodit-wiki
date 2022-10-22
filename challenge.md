@@ -1,8 +1,6 @@
 # Challenge
 
-## Work to do
-
-Replicate the search engine of uprodit.com: https://www.uprodit.com/profile/all/search/perso
+We're often looking for new talents who can contribute to our projects and also gives-us feedback on our APIs, that's why we're providing this challenge: replicate the [search engine of uprodit](https://www.uprodit.com/profile/all/search/perso)! 
 
 ![qr_search_engine](./img/qr_search_engine.png)
 

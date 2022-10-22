@@ -1,6 +1,6 @@
 # How to consume our API
 
-## Objectives
+## Purpose
 
 This documentation aims to provide all the knowledge allowing to consume the uprodit's webservices by external consumers (a mobile application for example).
 
