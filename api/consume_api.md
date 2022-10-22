@@ -26,19 +26,19 @@ It is a style of architecture based on webservices using the following principle
   * `403`: forbidden, access rights issue (`GET`/`PUT`/`POST`/`DELETE`)
   * `404`: the resources or restful endpoint not exists (`GET`/`PUT`/`POST`/`DELETE`)
   * `50X`: technical errors on the server-side (`GET`/`PUT`/`POST`/`DELETE`)
-* L'URI qui possède une signification importante pour l'appel d'un service : celle de permettre, par une simple lecture visuelle, d'identifier le service auquel on fait appel, voire dans le cas d'un appel de type GET, la ressource à récupérer.
+* The URI which has an important meaning for the invocation of a webservice: allowing, by a simple visual reading, to identify the resource.
 
-## Contrats d'interface
+## Interface contract
 
-Vous trouverez le fichier WADL de notre API ici: https://api.uprodit.com
+You'll find [here](./api_endpoints.md) the RESTful endpoints definitions.
 
-Vous trouverez également la définition des endpoints [ici](./api_endpoints.md).
+You'll also find [here](https://api.uprodit.com) our WADL file generated from the source code.
 
-Ce fichier fournis la structure des objets consommés et retournés par les différents Webservices (ces objets doivent être sérialisés/désérialisés en JSON).
+This file provides the structure of the resources consumed and returned by our webservices (those must be serialized/deserialized in JSON).
 
-Vous pouvez utiliser le plugin Maven de CXF : [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) pour construire les objets en question.
+You can use the [wadl2java](http://cxf.apache.org/docs/jaxrs-services-description.html#JAXRSServicesDescription-wadl2javaMavenplugin) CXF maven plugin for building the Java object/resources classes for your JAX-RS client.
 
-Nous envisageons dans le future de migrer vers Swagger. Vous avez aussi des [collections postman](./postman/README.md) à disposition.
+We're planning to use Swagger instead of WADL in the future. You also can use our available [postman collections](./postman/README.md).
 
 ## Authentification aux webservices de l'API
 
