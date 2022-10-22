@@ -1,14 +1,14 @@
-# Documentation uprodit
+# Uprodit documentation
 
-Ce wiki centralise l'ensemble des documentations et formations publiques mis à disposition pour les utilisateurs de [uprodit.com](https://www.uprodit.com).
+This wiki centralizes all the public documentation and training made available to users of [uprodit.com](https://www.uprodit.com).
 
-Vous pouvez y accéder via ces deux moyens:
-* Via l'url publique: https://doc.uprodit.com
-* Via ce repo gitlab: https://gitlab.comwork.io/comwork_public/uprodit
+You can access it through those two ways:
+* Via the public URL: https://doc.uprodit.com
+* Via this gitlab repository: https://gitlab.comwork.io/comwork_public/uprodit
 
-Voici les ressources disponibles:
-* [Architecture technique de uprodit](./architecture.md)
+Here's the available resources:
+* [Technical architecture of uprodit](./architecture.md)
 * [Restful API](./api/README.md)
 * [Challenge](./challenge.md)
 
-Vous pouvez également nous demander une invitation pour notre [workspace Slack](https://uprodit-tech.slack.com), envoyez nous un email à `contact@comwork.io` pour y être invité(e).
+You can also ask us for joining our [Slack workspace](https://uprodit-tech.slack.com), email us at `contact@comwork.io` to be invited.
