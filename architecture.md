@@ -5,7 +5,7 @@
 ## Used technologies
 
 * Docker
-* Java JDK 17
+* Java OpenJDK 17
 * Maven
 * Tomcat
 * Spring framework
