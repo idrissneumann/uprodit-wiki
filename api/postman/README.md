@@ -1,6 +1,6 @@
-# Collections postman
+# Postman collections
 
-Vous trouverez ici quelques collections postman pour vous aider manipuler [nos API](../README.md):
+You'll find here some postman collections to help you manipulate [our APIs](../README.md):
 
 * [UPRODIT SEARCH ALL](./UPRODIT%20SEARCH%20ALL.postman_collection.json)
 * [UPRODIT V2 PERSONAL](./UPRODIT%20V2%20PERSONAL.postman_collection.json)

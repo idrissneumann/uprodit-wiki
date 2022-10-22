@@ -1,8 +1,8 @@
 # Restful API
 
-Vous trouverez ici de multiples ressources pour consommer nos API :
+You'll find here multiple resources on how to consume our API:
 
-* [Comment consommer nos API](./consume_api.md)
-* [Formation sur nos API V2](./api_v2_slides.pdf)
-* [Contrats d'interfaces de nos API](./api_endpoints.md)
-* [Collections postman](./postman/README.md)
+* [How to consume our API](./consume_api.md)
+* [Slide of our API V2 presentation](./api_v2_slides.pdf) (in french)
+* [Interface contract](./api_endpoints.md)
+* [Postman collections](./postman/README.md)
