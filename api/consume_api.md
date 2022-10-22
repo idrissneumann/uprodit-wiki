@@ -118,28 +118,32 @@ const generateSignature = (appid, env, uri) => {
 export default generateSignature;
 ```
 
-Il enfin également possible de générer le header via l'api [`/v1/authheader`](https://api.uprodit.com):
+Another way for generating this signature is using the [`/v1/authheader`](https://api.uprodit.com) restful endpoint like that:
 
 ```shell
 $ curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"XXXXXXX","env":"YYYY","uri":"https://api.uprodit.com/v1/search/all?startIndex=0&maxResults=10&usecase=perso"}' -H "Content-Type: application/json"
 {"authorization":"Auth ?auth_signature=CQtP0y0VdeZ%2FQz%2FpCXmO4sddsdleTKI%3D&auth_nonce=vYGxnKbLFPxsdlsdksl8kg9XX%2BPQ6X2c%3D&auth_callback=%2Fv1%2Fsearch%2Fall&auth_timestamp=1638971145860&auth_token=0c5bdc20-daca-4f8e-81c3-e0f65591927e&auth_signature_method=HMAC-SHA1&auth_consumer_key=11aqkYrxIy7pqsfkslqfklsp1JSZUsdsd%3D"}
 ```
 
-Il faudra passer cette valeur dans le header `Authorization` du webservice que l'on souhaite appeler (qui correspond à l'uri passé dans le body). Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandée en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir implémenté localement le code qui vous permet de générer la signature à partir de l'`appid` (donc reprendre la lib java ws-cxf-ext ou le code javascript précédent ou encore ré-implémenter la même chose dans le langage que vous utilisez).
+You'll have to pass this value in the `Authorization` header of the webservice you want to invoke (which corresponds to the uri passed in the body).
 
-Petit hack si vous faite vos appels en shell scripts, vous pouvez utiliser `jq` pour récupérer directement la valeur du token dans une variable comme ceci:
+Cette solution est adaptée pour faire des tests rapides mais n'est pas recommandée en production car vous serez obligé de faire une double quantité d'appels (car pour chaque appel la signature est différente). Il vaut mieux avoir implémenté localement le code qui vous permet de générer la signature à partir de l'`appid` (donc reprendre la lib java ws-cxf-ext ou le code javascript précédent ou encore ré-implémenter la même chose dans le langage que vous utilisez).
+
+This solution is suitable for quick tests but __is not recommended in production__ because you'll have big performances issues doubling the number of http requests. It's far more better to have implemented or imported locally a signature generation function.
+
+Small hack if you make your calls in shell, you can use `jq` to directly pick the value of the token in a variable like this:
 
 ```shell
 authorization=$(curl "https://api.uprodit.com/v1/authheader" -d '{"appid":"challenge_uprodit","env":"production","uri":"https://api.uprodit.com/v2/profile/personal/en/51"}' -H "Content-Type: application/json" 2>/dev/null|jq .authorization -r)
 ```
 
-Puis directement consommer le webservice comme ceci:
+Then directly invoke the webservice like this:
 
 ```shell
 curl -H "Authorization: ${authorization}" "https://api.uprodit.com/v2/profile/personal/en/51" 2>/dev/null | jq .
 ```
 
-Exemple de requête de recherche:
+Search query example:
 
 ![curl_api](../img/curl_api.png)
 
