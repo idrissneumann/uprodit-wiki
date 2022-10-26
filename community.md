@@ -1,4 +1,4 @@
-# Uprodit community and support
+# Community and support
 
 ## Joining uprodit
 
