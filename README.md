@@ -10,5 +10,6 @@ Here's the available resources:
 * [Technical architecture of uprodit](./architecture.md)
 * [Restful API](./api/README.md)
 * [Challenge](./challenge.md)
+* [Community and support](./community.md)
 
 You can also ask us for joining our [Slack workspace](https://uprodit-tech.slack.com), email us at `contact@comwork.io` to be invited.
