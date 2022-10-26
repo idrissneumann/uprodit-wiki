@@ -24,7 +24,7 @@ If you want to make a beautiful design, it's always appreciated! But we'll most 
 
 Send the public URL and the git repository url to the `challenge@comwork.io` email address. Do not hesitate to ask help or send us what you achieved even if you didn't finished everything, even if it's not working well. The most important thing for us is reading your code and see your understanding. 
 
-You also can ask for joining our [slack workspace](https://uprodit-tech.slack.com) for asking help or sharing with the community. Send us an email to `challenge@comwork.io` for getting an invitation.
+You also can checkout [this page](./community.md) in order to get in touch with the team and get help or contribute if you want.
 
 ## Restful endpoints to use
 
