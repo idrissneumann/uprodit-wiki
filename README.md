@@ -12,4 +12,4 @@ Here's the available resources:
 * [Challenge](./challenge.md)
 * [Community and support](./community.md)
 
-You can also ask us for joining our [Slack workspace](https://uprodit-tech.slack.com), email us at `contact@comwork.io` to be invited.
+You can also ask us for joining our [Slack workspace](https://join.slack.com/t/uprodit-tech/shared_invite/zt-1h3hh21tf-Rxb4zbSiRz8GFVwXvqLHMA).

@@ -120,7 +120,7 @@ const config = {
             position: 'right',
           },
           {
-            to: 'https://uprodit-tech.slack.com',
+            to: 'https://join.slack.com/t/uprodit-tech/shared_invite/zt-1h3hh21tf-Rxb4zbSiRz8GFVwXvqLHMA',
             label: 'Slack',
             position: 'right',
           },
@@ -142,7 +142,7 @@ const config = {
               },
               {
                 label: 'Slack',
-                to: 'https://uprodit-tech.slack.com',
+                to: 'https://join.slack.com/t/uprodit-tech/shared_invite/zt-1h3hh21tf-Rxb4zbSiRz8GFVwXvqLHMA',
               },
             ],
           },
