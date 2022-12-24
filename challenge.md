@@ -12,9 +12,14 @@ This is what it looks like:
 
 * Deliver a SPA (for "Single Page Application") using a client-side JS framework like Angular, React, Svelte or Vue.JS
 * Push your code in a public git repo with an opensource licence (MIT, Apache 2.0, GPL, whatever). You can use any public git provider you want like [github](https://github.com), [gitlab](https://gitlab.com) or [bitbucket](https://bitbucket.org)
-* Auto-deploy your application in a PaaS like [Heroku](https://www.heroku.com) or [Netlify](https://www.netlify.com) or any hosting cloud provider (you have to provide us an available https url)
 * Provide a production optimized `Dockerfile` for running your application in a container (which can be run everywhere) and a `docker-compose.yml` for making the build and run locally easier. We got [this workshop](https://gitlab.comwork.io/comwork_public/training/docker) (in French) that can help you achieving this part
 * Provide insights in the `README.md` file on how locally build and run your application with screenshots
+* Auto-deploy your application with a CI/CD pipeline, you can use one of the following platform for free:
+  * [Vercel](https://vercel.com)
+  * [Netlify](https://www.netlify.com)
+  * [Gihtub pages](https://pages.github.com)
+  * [Gitlab pages](https://docs.gitlab.com/ce/user/project/pages/)
+  * Any other cloud/hosting provider
 
 There's no great efforts expected on the design, something in this style is enough:
 
