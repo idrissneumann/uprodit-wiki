@@ -63,7 +63,7 @@ If you can't use our client library (because you're using another programing lan
 Those parameters must be concatenates with the following form:
 
 ```
-Auth auth_consumer_key=valeur&auth_callback=valeur&...
+Auth auth_consumer_key=value&auth_callback=value&...
 ```
 
 Here's an example of javascript function for generating this signature:
