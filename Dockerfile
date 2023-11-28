@@ -1,10 +1,10 @@
-ARG NODE_VERSION=16.14.2-alpine
+ARG NODE_VERSION=18.18.0-alpine
 ARG NGINX_VERSION=1.15
 
 # Stage build
 FROM node:${NODE_VERSION} AS doc_builder
 
-RUN npx create-docusaurus@latest uprodit-wiki classic
+RUN npx create-docusaurus@2.4.3 uprodit-wiki classic
 
 WORKDIR /uprodit-wiki
 
