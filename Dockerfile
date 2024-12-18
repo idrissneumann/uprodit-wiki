@@ -34,22 +34,14 @@ RUN mkdir -p docs/api
 # Copy documentation content
 COPY . docs/
 
-# Process API documentation separately
 RUN rm -rf docs/ci && \
     npm i -g api-spec-converter swagger-markdown && \
-    # Convert WADL to Swagger
     api-spec-converter --from=wadl --to=swagger_2 --syntax=json --order=alpha https://api.uprodit.com > api_endpoints.json && \
-    # Convert Swagger to markdown with proper frontmatter
-    (echo "---"; \
-     echo "id: api_endpoints"; \
-     echo "title: API Endpoints Definitions"; \
-     echo "sidebar_label: API Endpoints"; \
-     echo "---"; \
-     swagger-markdown -i api_endpoints.json) > docs/api/api_endpoints.md && \
-    rm -rf api_endpoints.json
-
-# Build the site
-RUN pnpm run build
+    npx swagger-markdown -i api_endpoints.json && \
+    rm -rf api_endpoints.json && \
+    mv api_endpoints.md docs/api/api_endpoints.md && \
+    sed -i "1 s/^\#/\# API endpoints definitions/" docs/api/api_endpoints.md && \
+    pnpm run build
 
 # Stage run
 FROM nginx:${NGINX_VERSION} AS doc
