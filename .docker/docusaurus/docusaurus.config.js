@@ -1,6 +1,3 @@
-const theme = require('prism-react-renderer/themes/dracula');
-
-/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Uprodit wiki',
   tagline: 'Public documentation of uprodit',
@@ -11,8 +8,20 @@ const config = {
   favicon: 'img/favicon.png',
 
   plugins: [
-    require.resolve('docusaurus-lunr-search'),
-    require.resolve('docusaurus-plugin-matomo')
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+          hashed: true,
+          language: ["en", "fr"],
+          docsRouteBasePath: "/docs",
+          indexDocs: true,
+          indexPages: false,
+          highlightSearchTermsOnTargetPage: true,
+          removeDefaultStopWordFilter: true,
+          removeDefaultStemmer: true,
+      },
+    ],
+    'docusaurus-plugin-matomo'
   ],
 
   i18n: {
@@ -150,7 +159,8 @@ const config = {
         copyright: `Copyright © 2015 - ${new Date().getFullYear()} Uprodit.`,
       },
       prism: {
-        theme: theme
+        theme: require('prism-react-renderer').themes.github,
+        darkTheme: require('prism-react-renderer').themes.dracula,
       },
     }),
 };
