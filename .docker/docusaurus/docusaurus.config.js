@@ -153,6 +153,9 @@ const config = {
                 label: 'Slack',
                 to: 'https://join.slack.com/t/uprodit-tech/shared_invite/zt-1h3hh21tf-Rxb4zbSiRz8GFVwXvqLHMA',
               },
+              {
+                html: `<img src="https://cloud-api.comwork.io/v1/tracker/img/doc.uprodit.com" style="display: none"></img>`
+              },
             ],
           },
         ],
