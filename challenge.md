@@ -17,7 +17,7 @@ This is what it looks like:
 * Auto-deploy your application with a CI/CD pipeline, you can use one of the following platform for free:
   * [Vercel](https://vercel.com)
   * [Netlify](https://www.netlify.com)
-  * [Gihtub pages](https://pages.github.com)
+  * [Github pages](https://pages.github.com)
   * [Gitlab pages](https://docs.gitlab.com/ce/user/project/pages/)
   * Any other cloud/hosting provider
 
