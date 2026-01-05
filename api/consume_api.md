@@ -48,7 +48,7 @@ Almost all our webservices are authenticated for each consumers/applications (yo
 
 The solution implemented is the HMAC signature with our `ws-cxf-ext` library: https://ws-cxf-ext.github.io/ws-cxf-ext/
 
-If your're consuming our API with a Java client application, you can use the client part of our library: https://gitlab.comwork.io/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
+If your're consuming our API with a Java client application, you can use the client part of our library: https://gitlab.cwcloud.tech/oss/ws-cxf-ext/-/blob/master/docs/getting-started.md#declaring-clients
 
 If you can't use our client library (because you're using another programing language for example), you have to concatenate and pass the following parameters in the `Authorization` header:
 

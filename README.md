@@ -4,7 +4,7 @@ This wiki centralizes all the public documentation and training made available t
 
 You can access it through those two ways:
 * Via the public URL: https://doc.uprodit.com
-* Via this gitlab repository: https://gitlab.comwork.io/comwork_public/uprodit
+* Via this gitlab repository: https://gitlab.cwcloud.tech/comwork_public/uprodit
 
 Here's the available resources:
 * [Technical architecture of uprodit](./architecture.md)

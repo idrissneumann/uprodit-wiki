@@ -13,7 +13,7 @@ There's also other way to contribute or ask for help.
 
 Here's our git repositories:
 
-* Main repo: https://gitlab.comwork.io/comwork_public/uprodit
+* Main repo: https://gitlab.cwcloud.tech/comwork_public/uprodit
 * Github mirror: https://github.com/idrissneumann/uprodit-wiki.git
 * Gitlab mirror: https://gitlab.com/ineumann/uprodit-wiki.git
 * Froggit mirror: https://lab.frogg.it/ineumann/uprodit-wiki.git

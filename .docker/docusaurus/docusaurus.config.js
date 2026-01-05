@@ -124,7 +124,7 @@ const config = {
             position: 'left',
           },
           {
-            to: 'https://gitlab.comwork.io/comwork_public/uprodit',
+            to: 'https://gitlab.cwcloud.tech/comwork_public/uprodit',
             label: 'Gitlab',
             position: 'right',
           },
@@ -147,7 +147,7 @@ const config = {
               },
               {
                 label: 'Gitlab',
-                to: 'https://gitlab.comwork.io/comwork_public/uprodit',
+                to: 'https://gitlab.cwcloud.tech/comwork_public/uprodit',
               },
               {
                 label: 'Slack',
