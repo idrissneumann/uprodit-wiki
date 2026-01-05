@@ -7,22 +7,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
 
-  plugins: [
-    [
-      '@easyops-cn/docusaurus-search-local',
-      {
-          hashed: true,
-          language: ["en", "fr"],
-          docsRouteBasePath: "/docs",
-          indexDocs: true,
-          indexPages: false,
-          highlightSearchTermsOnTargetPage: true,
-          removeDefaultStopWordFilter: true,
-          removeDefaultStemmer: true,
-      },
-    ],
-    'docusaurus-plugin-matomo'
-  ],
+  plugins: [],
 
   i18n: {
     defaultLocale: 'en',
@@ -54,12 +39,6 @@ const config = {
         defaultMode: 'dark',
         disableSwitch: true,
         respectPrefersColorScheme: false,
-      },
-      matomo: {
-        matomoUrl: 'https://matomo.comwork.io/',
-        siteId: '21',
-        phpLoader: 'matomo.php',
-        jsLoader: 'matomo.js',
       },
       metadata: [
         {
