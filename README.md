@@ -12,4 +12,4 @@ Here's the available resources:
 * [Challenge](./challenge.md)
 * [Community and support](./community.md)
 
-You can also ask us for joining our [Slack workspace](https://join.slack.com/t/uprodit-tech/shared_invite/zt-1h3hh21tf-Rxb4zbSiRz8GFVwXvqLHMA).
+You can also ask us for joining the [CWCloud discord server](https://discord.gg/46GrCVTV8Z).
