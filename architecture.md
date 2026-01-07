@@ -16,8 +16,7 @@
 * Vert.x
 * Thymleaf
 * PostgreSQL
-* Elasticsearch
+* Quickwit
 * Redis
-* Python
 
 All are kept up to date.
